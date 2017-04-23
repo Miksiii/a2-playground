@@ -1,0 +1,18 @@
+<div class="autocompleter">
+    <div class="autocompleter-select">
+        Select your city
+    </div>
+    <div class="autocompleter-input">
+        <h2>Dib Services</h2>
+        <input type="text" class="form-control" placeholder="Type any city" 
+        #searchBox (keyup)="search(searchBox.value)">
+    </div>
+    <div class="autocompleter-dropdown">
+        <ul class="list-group autocompleter-dropdown-group">
+            <li class="list-group-item list-group autocompleter-dropdown-group-item" 
+            *ngFor="let comment of comments | async">
+                <p class="autocompleter-dropdown-group-item-title">{{comment.email}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

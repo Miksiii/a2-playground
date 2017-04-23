@@ -1,0 +1,48 @@
+<div class="autocompleter">
+
+    <!-- select input -->
+    <div class="autocompleter-select" 
+         *ngIf="isDropdownButtonSelectable" 
+         (click)="showDropdown()">
+            <button class="btn btn-default">
+                <span *ngIf="selectedCity">{{selectedCity}}</span>
+                <span *ngIf="!selectedCity">Select city</span>
+            </button>
+    </div>
+
+    <!-- autocomplete -->
+    <div class="autocompleter-input" *ngIf="!isDropdownButtonSelectable">
+        <input type="text" class="form-control" 
+        (keyup)="search($event)" 
+        [(ngModel)]="selectedCity"
+        placeholder="Search city.."
+        #searchBox>
+    </div>
+
+    <!-- Dropdown list of countries with cities -->
+    <div class="autocompleter-dropdown" *ngIf="isDropdownActive">
+        <ul class="list-group autocompleter-dropdown-group">
+
+            <!-- Country -->
+            <li *ngFor="let location of locations" class="list-group-item list-group autocompleter-dropdown-group-item" 
+                 [hidden]="(location.cities | filterCity: searchInput).length === 0">
+
+                <!-- Country name --> 
+                <p class="autocompleter-dropdown-group-item-title">
+                    {{location.name}}
+                </p>
+
+                <!-- Cities -->
+                <ul class="list-group autocompleter-dropdown-group-item-content">
+                    <li class="autocompleter-dropdown-group-item-content-item" 
+                        *ngFor="let city of (location.cities | filterCity: searchInput)" 
+                        (click)="setSelectedCityName(city.name)">
+                        {{city.name}}                    
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+
+    </div>
+</div>

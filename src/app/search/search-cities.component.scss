@@ -1,0 +1,57 @@
+.autocompleter {
+    margin: 100px auto;
+    width: 250px;;
+
+    &-select {
+        
+    }
+
+    &-input {
+
+    }
+
+    &-dropdown {
+        max-height: 300px;
+        height: auto;
+        overflow-y: scroll;
+
+        &-group-item {
+            padding: 0;
+            cursor: pointer;
+
+            &-title {
+                background-color: gray;
+                width: 100%;
+                padding: 7px 7px;
+                margin-bottom: 0;
+                color: white;
+                font-weight: bold;
+            }
+
+            &-content {
+                padding: 7px 7px;
+                list-style-type: none;
+                width: 100%;
+                
+                &-item {
+                    margin-bottom: 2px;
+                    
+                    transition: .2s ease-out;
+
+                    &:hover {
+                        background-color: #eaeaea;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+.btn {
+    width: 100% !important;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
